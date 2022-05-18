@@ -71,46 +71,74 @@ import slotFun from "./myFolder/slotMachine";
 
 
 
+// function App(){
+
+// //  var count = 0;
+// //  const state = useState();
+// var time = new Date().toLocaleTimeString();
+// var date = new Date().toLocaleDateString();
+// // var hr = date.getHours();
+// // var min = date.getMinutes();
+// // var sec = date.getSeconds();
+// // var ampm = date.toLocaleTimeString();
+// // var res = hr + ":" + min + ":"+ sec;
+
+
+// var res = time + "\n" + date;
+
+//   const [count,newfun] = useState(res);
+
+//   // setInterval(myfun,1000);
+//   const myfun = () =>{
+//     return (
+//       newfun(res)
+//     )
+//   }
+
+
+//   return (
+
+//     <>
+    
+//     <div>
+
+//       <h1> {count}</h1>
+
+//       <button onClick={myfun}>
+//         Click Here
+//       </button>
+
+//     </div>
+
+//     </>
+//   )
+// }
+
 function App(){
 
-//  var count = 0;
-//  const state = useState();
-var time = new Date().toLocaleTimeString();
-var date = new Date().toLocaleDateString();
-// var hr = date.getHours();
-// var min = date.getMinutes();
-// var sec = date.getSeconds();
-// var ampm = date.toLocaleTimeString();
-// var res = hr + ":" + min + ":"+ sec;
+  var time = new Date().toLocaleTimeString();
 
+  const [primary,secondary] = useState(time);
 
-var res = time + "\n" + date;
+  const fun = () =>{
 
-  const [count,newfun] = useState(res);
-
-  const myfun = () =>{
-    return (
-      newfun(res)
+    return(
+      secondary(time)
     )
   }
 
+  setInterval(fun,1000);
 
-  return (
+  return(
 
     <>
+  
+      <h1>{primary}</h1>
     
-    <div>
-
-      <h1> {count}</h1>
-
-      <button onClick={myfun}>
-        Click Here
-      </button>
-
-    </div>
-
     </>
+
   )
+
 }
   
 
