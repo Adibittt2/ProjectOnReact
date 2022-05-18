@@ -2,6 +2,7 @@
 // import logo from './logo.svg';
 import { useState } from 'react';
 import './App.css';
+// import ReactDOM from 'react-dom';
 // import {add,sub,multi,div} from "./myFolder/calculater";
 import slotFun from "./myFolder/slotMachine";
 
@@ -69,19 +70,31 @@ import slotFun from "./myFolder/slotMachine";
 // }
 
 
+
 function App(){
 
-  // var count = 0;
- const state = useState();
-  const [count,newfun] = useState(0);
+//  var count = 0;
+//  const state = useState();
+var time = new Date().toLocaleTimeString();
+var date = new Date().toLocaleDateString();
+// var hr = date.getHours();
+// var min = date.getMinutes();
+// var sec = date.getSeconds();
+// var ampm = date.toLocaleTimeString();
+// var res = hr + ":" + min + ":"+ sec;
+
+
+var res = time + "\n" + date;
+
+  const [count,newfun] = useState(res);
 
   const myfun = () =>{
     return (
-      newfun(count+1)
+      newfun(res)
     )
   }
 
-  
+
   return (
 
     <>
