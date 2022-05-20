@@ -114,33 +114,64 @@ import slotFun from "./myFolder/slotMachine";
 //   )
 // }
 
+// function App(){
+
+//   var time = new Date().toLocaleTimeString();
+
+//   const [primary,secondary] = useState(time);
+
+//   const fun = () =>{
+
+//     return(
+//       secondary(time)
+//     )
+//   }
+
+//   setInterval(fun,1000);
+
+//   return(
+
+//     <>
+  
+//       <h1>{primary}</h1>
+    
+//     </>
+
+//   )
+
+// }
+  
+
 function App(){
 
-  var time = new Date().toLocaleTimeString();
+  const [name,name1] = useState("");
+  const [val,val_fun] = useState();
 
-  const [primary,secondary] = useState(time);
-
-  const fun = () =>{
-
+  const fun1 = (event) =>{
     return(
-      secondary(time)
+      name1(event.target.value)
+
+      // name1({name})
+    )
+    
+    }
+
+  const fun2 = () => {  
+    return(
+      val_fun(name)
     )
   }
 
-  setInterval(fun,1000);
-
   return(
-
     <>
-  
-      <h1>{primary}</h1>
-    
+    <h1>Hello {val}</h1>
+    <input type="text" 
+    placeholder= "Put name here" 
+    onChange ={fun1} 
+    value = {name} />
+    <button onClick = {fun2}>Click Here</button>
     </>
-
   )
-
 }
-  
-
 export default App;
 
