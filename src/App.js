@@ -6,6 +6,8 @@ import './App.css';
 // import {add,sub,multi,div} from "./myFolder/calculater";
 import slotFun from "./myFolder/slotMachine";
 
+import {Item} from "./myFolder/Todo/Item";
+
 // function App() {
 
 //   let time = new Date(2022,15,6,22);
@@ -142,36 +144,269 @@ import slotFun from "./myFolder/slotMachine";
 // }
   
 
+// function App(){
+
+//   const [name,name1] = useState("");
+//   const [val,val_fun] = useState();
+
+//   const fun1 = (event) =>{
+//     return(
+
+//       name1(event.target.value)
+
+//       // name1({name})
+
+//     )
+
+//     }
+
+//   const fun2 = () => {  
+//     return(
+//       val_fun(name)
+//     )
+//   }
+
+//   return(
+//     <>
+//     <h1>Hello {val}</h1>
+//     <input type="text" 
+//     placeholder= "Put name here" 
+//     onChange ={fun1} 
+//     value = {name} />
+//     <button onClick = {fun2}>Click Here</button>
+//     </>
+//   )
+// }
+
+ 
+// function App(){
+
+//   const [data,data_fun] = useState({
+//     firstName: "",
+//     lastName: ""
+//   });
+
+//   const [show,show_fun] = useState({
+//     firstName: "",
+//     lastName: ""
+//   });
+
+//   const fun1 = (event)=>{
+
+//     const name = event.target.name;
+//     const value = event.target.value;
+    
+//       data_fun((prevalue) =>{
+
+//         console.log(prevalue);
+//     // console.log(prevalue.lastName);
+   
+//         if(name == "fName"){
+//           return(
+//            {
+//              firstName:value,
+//              lastName: prevalue.lastName
+//            }
+//           )}
+//          else if(name == "lName"){
+//             return(
+//              {
+//                firstName:prevalue.firstName,
+//                lastName: value
+//              }
+//             )}
+//       })
+    
+//   }
+
+//   const fun2 = () => {
+
+//     return(
+//       show_fun(data)
+//     )
+//   }
+
+
+//   return(
+
+//     <>
+//     <h1>Hello {show.firstName} {show.lastName}</h1>
+   
+//     <input type="text" placeholder="Enter Name" name = "fName"
+//     onChange = {fun1} value = {data.firstName}/>
+
+//      <input type="text" placeholder="Enter Name" name = "lName"
+//     onChange = {fun1} value = {data.lastName}/>
+
+//     <button onClick={fun2}>Click Here</button>
+
+//     </>
+
+    
+//   )
+
+
+// }
+
+
+// function App(){
+
+//   const [input,setInput] = useState("");
+//   const [btnInput,setBtnInput] = useState([]);
+
+//   const fun1 = (event) =>{
+
+//     setInput(event.target.value)
+//   }
+
+//   const clickButton = ()=>{
+
+//     setBtnInput((oldValue)=>{
+//       return [input,...oldValue]
+//     })
+
+//     setInput("");
+//   }
+
+//   const Delete = (id) => {
+//     // console.log("sfjkskf" + "deleted")
+//     return (setBtnInput(btnInput.filter((item,i,array)=>{
+//         return i !=id
+//     })))
+     
+// }
+//   return <>
+  
+//   <h1>Todo List</h1>
+
+//   <input type="text" placeholder = "Enter Value" value = {input} onChange = {fun1}/>
+
+//   <button onClick = {clickButton}>Add</button>
+
+//   <ol>{btnInput.map( (val,ind,arr) => {
+//     return <Item list = {val} id = {ind} onDelete = {Delete}/>
+//   })}
+
+//   </ol>
+
+
+
+//  {/* <ol><Item list = {btnInput}/></ol> */}
+//   </> ;
+// }
+
+
+
 function App(){
 
-  const [name,name1] = useState("");
-  const [val,val_fun] = useState();
+const [input,setInput]  = useState({
+  fName:"",
+  lName:"",
+  phone:"",
+  address:"",
 
-  const fun1 = (event) =>{
-    return(
-      name1(event.target.value)
+})
 
-      // name1({name})
-    )
-    
-    }
+const [submit,setSubmit]  = useState({
+  fName:"",
+  lName:"",
+  phone:"",
+  address:"",
 
-  const fun2 = () => {  
-    return(
-      val_fun(name)
-    )
-  }
+})
+
+
+const inputFun = (event)=>{
+
+  // const name = event.target.name;
+  // const value = event.target.value;
+
+  const {placeholder,value} = event.target;
+
+  console.log(event.target.value);
+
+  
+    setInput((prevalue)=>{
+
+      // console.log(prevalue);
+        // if(name == "firstName"){
+        //             return(
+        //              {
+        //                fName:value,
+        //                lName: prevalue.lName
+        //              }
+        //             )}
+        //             else if(name == "lastName"){
+        //               return(
+        //                {
+        //                  lName:value,
+        //                  fName: prevalue.fName
+        //                }
+        //               )}
+      
+        
+
+
+        return{
+          ...prevalue,
+          [placeholder] : value,
+          // fName:value
+
+// see line 207 or near;
+          // yahan par input object ke place pe  placeholder h and 
+          // placeholder name should be same as object name;
+
+        };
+      
+    })
+  
+}
+
+const submitFun =()=>{
 
   return(
-    <>
-    <h1>Hello {val}</h1>
-    <input type="text" 
-    placeholder= "Put name here" 
-    onChange ={fun1} 
-    value = {name} />
-    <button onClick = {fun2}>Click Here</button>
-    </>
+    setSubmit(input)
   )
 }
+
+
+return(
+  <>
+  <h1>{submit.fName}  {submit.lName} {submit.phone} {submit.address}</h1>
+ 
+  <input 
+   type="text"
+   placeholder="fName"
+  //  name = "fName"
+   onChange={inputFun}
+   value={input.fName}/>
+
+<input 
+   type="text"
+   placeholder="lName"
+  //  name = "lName"
+   onChange={inputFun}
+   value={input.lName}/>
+
+<input 
+   type="text"
+   placeholder="phone"
+  //  name = "phone"
+   onChange={inputFun}
+   value={input.phone}/>
+
+<input 
+   type="text"
+   placeholder="address"
+  //  name = "address"
+   onChange={inputFun}
+   value={input.address}/>
+
+    <button onClick={submitFun}>Submit</button>
+  </>
+)
+
+}
+
 export default App;
 
