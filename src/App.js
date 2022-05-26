@@ -1,12 +1,16 @@
 
 // import logo from './logo.svg';
+import React from 'react';
 import { useState } from 'react';
 import './App.css';
 // import ReactDOM from 'react-dom';
 // import {add,sub,multi,div} from "./myFolder/calculater";
-import slotFun from "./myFolder/slotMachine";
+// import slotFun from "./myFolder/slotMachine";
 
-import {Item} from "./myFolder/Todo/Item";
+// import {Item} from "./myFolder/Todo/Item";
+
+import {api} from "./myFolder/Accordion/api";
+import Accordion from './myFolder/Accordion/Accordion';
 
 // function App() {
 
@@ -297,113 +301,160 @@ import {Item} from "./myFolder/Todo/Item";
 
 
 
-function App(){
+// function App(){
 
-const [input,setInput]  = useState({
-  fName:"",
-  lName:"",
-  phone:"",
-  address:"",
+// const [input,setInput]  = useState({
+//   fName:"",
+//   lName:"",
+//   phone:"",
+//   address:"",
 
-})
+// })
 
-const [submit,setSubmit]  = useState({
-  fName:"",
-  lName:"",
-  phone:"",
-  address:"",
+// const [submit,setSubmit]  = useState({
+//   fName:"",
+//   lName:"",
+//   phone:"",
+//   address:"",
 
-})
+// })
 
 
-const inputFun = (event)=>{
+// const inputFun = (event)=>{
 
-  // const name = event.target.name;
-  // const value = event.target.value;
+//   // const name = event.target.name;
+//   // const value = event.target.value;
 
-  const {placeholder,value} = event.target;
+//   const {placeholder,value} = event.target;
 
-  console.log(event.target.value);
+//   console.log(event.target.value);
 
   
-    setInput((prevalue)=>{
+//     setInput((prevalue)=>{
 
-      // console.log(prevalue);
-        // if(name == "firstName"){
-        //             return(
-        //              {
-        //                fName:value,
-        //                lName: prevalue.lName
-        //              }
-        //             )}
-        //             else if(name == "lastName"){
-        //               return(
-        //                {
-        //                  lName:value,
-        //                  fName: prevalue.fName
-        //                }
-        //               )}
+//       // console.log(prevalue);
+//         // if(name == "firstName"){
+//         //             return(
+//         //              {
+//         //                fName:value,
+//         //                lName: prevalue.lName
+//         //              }
+//         //             )}
+//         //             else if(name == "lastName"){
+//         //               return(
+//         //                {
+//         //                  lName:value,
+//         //                  fName: prevalue.fName
+//         //                }
+//         //               )}
       
         
 
 
-        return{
-          ...prevalue,
-          [placeholder] : value,
-          // fName:value
+//         return{
+//           ...prevalue,
+//           [placeholder] : value,
+//           // fName:value
 
-// see line 207 or near;
-          // yahan par input object ke place pe  placeholder h and 
-          // placeholder name should be same as object name;
+// // see line 207 or near;
+//           // yahan par input object ke place pe  placeholder h and 
+//           // placeholder name should be same as object name;
 
-        };
+//         };
       
-    })
+//     })
   
-}
+// }
 
-const submitFun =()=>{
+// const submitFun =()=>{
 
-  return(
-    setSubmit(input)
-  )
-}
+//   return(
+//     setSubmit(input)
+//   )
+// }
 
+
+// return(
+//   <>
+//   <h1>{submit.fName}  {submit.lName} {submit.phone} {submit.address}</h1>
+ 
+//   <input 
+//    type="text"
+//    placeholder="fName"
+//   //  name = "fName"
+//    onChange={inputFun}
+//    value={input.fName}/>
+
+// <input 
+//    type="text"
+//    placeholder="lName"
+//   //  name = "lName"
+//    onChange={inputFun}
+//    value={input.lName}/>
+
+// <input 
+//    type="text"
+//    placeholder="phone"
+//   //  name = "phone"
+//    onChange={inputFun}
+//    value={input.phone}/>
+
+// <input 
+//    type="text"
+//    placeholder="address"
+//   //  name = "address"
+//    onChange={inputFun}
+//    value={input.address}/>
+
+//     <button onClick={submitFun}>Submit</button>
+//   </>
+// )
+
+// }
+
+
+
+function App(){
+
+  const [data,setData] = useState(api);
+
+  
+  
 
 return(
-  <>
-  <h1>{submit.fName}  {submit.lName} {submit.phone} {submit.address}</h1>
- 
-  <input 
-   type="text"
-   placeholder="fName"
-  //  name = "fName"
-   onChange={inputFun}
-   value={input.fName}/>
 
-<input 
-   type="text"
-   placeholder="lName"
-  //  name = "lName"
-   onChange={inputFun}
-   value={input.lName}/>
+<>
+{data.map((val)=>{
+return(
+  <Accordion key = {val.id} id = {val.id} ques = {val.q} ans = {val.a}/>
+)
+})
+}
 
-<input 
-   type="text"
-   placeholder="phone"
-  //  name = "phone"
-   onChange={inputFun}
-   value={input.phone}/>
+{/* <Accordion/> */}
 
-<input 
-   type="text"
-   placeholder="address"
-  //  name = "address"
-   onChange={inputFun}
-   value={input.address}/>
+{/* <div className='main'>
 
-    <button onClick={submitFun}>Submit</button>
-  </>
+  <div> */}
+  {/* {
+    data.map((val)=>{
+return(
+    <Accordion/>
+)
+    })
+    } */}
+    
+
+    {/* <h1> {data.map((val)=>{
+
+      return val.q
+})}</h1> */}
+
+
+  {/* </div>
+</div> */}
+</>
+
 )
 
 }
