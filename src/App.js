@@ -9,8 +9,13 @@ import './App.css';
 
 // import {Item} from "./myFolder/Todo/Item";
 
-import {api} from "./myFolder/Accordion/api";
-import Accordion from './myFolder/Accordion/Accordion';
+// import {api} from "./myFolder/Accordion/api";
+// import Accordion from './myFolder/Accordion/Accordion';
+
+
+// import {Card} from "./Restaurant/Card";
+import Restaurant from './Restaurant/Restaurant';
+
 
 // function App() {
 
@@ -414,49 +419,64 @@ import Accordion from './myFolder/Accordion/Accordion';
 
 
 
-function App(){
+// function App(){
 
-  const [data,setData] = useState(api);
+//   const [data,setData] = useState(api);
 
   
   
 
-return(
+// return(
 
-<>
-{data.map((val)=>{
-return(
-  <Accordion key = {val.id} id = {val.id} ques = {val.q} ans = {val.a}/>
-)
-})
-}
+// <>
+// {data.map((val)=>{
+// return(
+//   <Accordion key = {val.id} id = {val.id} ques = {val.q} ans = {val.a}/>
+// )
+// })
+// }
 
-{/* <Accordion/> */}
+// {/* <Accordion/> */}
 
-{/* <div className='main'>
+// {/* <div className='main'>
 
-  <div> */}
-  {/* {
-    data.map((val)=>{
-return(
-    <Accordion/>
-)
-    })
-    } */}
+//   <div> */}
+//   {/* {
+//     data.map((val)=>{
+// return(
+//     <Accordion/>
+// )
+//     })
+//     } */}
     
 
-    {/* <h1> {data.map((val)=>{
+//     {/* <h1> {data.map((val)=>{
 
-      return val.q
-})}</h1> */}
+//       return val.q
+// })}</h1> */}
 
 
-  {/* </div>
-</div> */}
-</>
+//   {/* </div>
+// </div> */}
+// </>
 
-)
+// )
 
+// }
+
+
+function App(){
+
+
+
+  return(
+
+    <>
+
+
+    <Restaurant/>
+    </>
+  )
 }
 
 export default App;
